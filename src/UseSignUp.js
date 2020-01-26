@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 
-const useSignUp =(setIsValid) => {
+const useSignUp =(setFormIsValid) => {
   const [inputs, setInputs] = useState({
     fullName: "",
     email: "",
@@ -29,8 +29,8 @@ const useSignUp =(setIsValid) => {
     let validityCheck = Object.values(inputsValidity).every(
       inputValidity => inputValidity === true
     );
-    setIsValid(validityCheck);
-  }, [inputsValidity,setIsValid]);
+    setFormIsValid(validityCheck);
+  }, [inputsValidity,setFormIsValid]);
 
   const handleInputValidation = (id, value) => {
     //StateId variable holds the property name of the id (element) in inputsValidity state

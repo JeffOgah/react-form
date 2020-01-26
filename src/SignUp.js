@@ -2,8 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import useSignUp from "./UseSignUp";
 
-const SignUp = ({handleForm: {isValid, setIsValid}}) => {
-  const { inputs, handleInputChange } = useSignUp(setIsValid);
+const SignUp = ({handleForm: {formIsValid, setFormIsValid}}) => {
+  const { inputs, handleInputChange } = useSignUp(setFormIsValid);
   const history = useHistory();
 
   const handleSubmit = event => {
@@ -127,7 +127,7 @@ const SignUp = ({handleForm: {isValid, setIsValid}}) => {
           </small>
         </div>
       </div>
-      <button type="submit" className="btn btn-primary" disabled={!isValid}>
+      <button type="submit" className="btn btn-primary" disabled={!formIsValid}>
         Submit
       </button>
     </form>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,6 +9,7 @@ import SignUp from "./SignUp";
 import Dashboard from "./Dashboard";
 
 
+
 const formValidity = {
   isValid: false,
   setIsValid(value) {
@@ -17,12 +18,14 @@ const formValidity = {
 };
 
 export default function App() {
+  const [formIsValid, setFormIsValid] = useState(false)
+
   return (
     <Router>
       <>
         <Switch>
           <Route exact path="/">
-            <SignUp handleForm={formValidity} />
+            <SignUp handleForm={{formIsValid, setFormIsValid}} />
           </Route>
           <PrivateRoute exact path="/dashboard">
             <Dashboard />
