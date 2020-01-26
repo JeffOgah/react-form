@@ -2,15 +2,17 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import useSignUp from "./UseSignUp";
 
-const SignUp = ({handleForm: {formIsValid, setFormIsValid}}) => {
+const SignUp = ({ handleForm: { formIsValid, setFormIsValid } }) => {
   const { inputs, handleInputChange } = useSignUp(setFormIsValid);
   const history = useHistory();
 
   const handleSubmit = event => {
     event.preventDefault();
-    history.push("/dashboard");
+    if (formIsValid) {
+      history.push("/dashboard");
+    }
   };
-  
+
   return (
     <form onSubmit={handleSubmit} className="container">
       <h1>Signup Form</h1>

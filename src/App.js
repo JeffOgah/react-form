@@ -27,7 +27,7 @@ export default function App() {
           <Route exact path="/">
             <SignUp handleForm={{formIsValid, setFormIsValid}} />
           </Route>
-          <PrivateRoute exact path="/dashboard">
+          <PrivateRoute exact path="/dashboard" validated={formIsValid}>
             <Dashboard />
           </PrivateRoute>
         </Switch>
@@ -37,12 +37,12 @@ export default function App() {
 }
 
 // A wrapper for Dashboard <Route> that redirects to the signup page if not yet validated.
-function PrivateRoute({ children, ...rest }) {
+function PrivateRoute({ children, validated, ...rest }) {
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        formValidity.isValid ? (
+        validated ? (
           children
         ) : (
           <Redirect
